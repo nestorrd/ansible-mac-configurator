@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+
+  vars:
+    homebrewpackages:
+      - name: betterdisplay
+      - name: docker
+  
+  roles:
+    - homebrew
