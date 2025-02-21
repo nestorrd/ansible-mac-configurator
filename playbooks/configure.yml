@@ -5,6 +5,7 @@
     homebrewpackages:
       - name: betterdisplay
       - name: docker
+      - name: visual-studio-code
   
   roles:
     - homebrew
