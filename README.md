@@ -20,7 +20,16 @@ This repository contains Ansible playbooks and roles for configuring a macOS sys
 
 ## Usage
 
-1. Clone the repository.
-2. Run the playbook using the command:
+1. Fork the repository and clone it.
+2. This repository needs a `vars.yml` file where you will store your desired configuration. In case you want to push your changes, remove `vars.yml` from `.gitignore` and make your repository Private.
+3. Create a `vars.yml` file in the `playbooks` directory with the desired content:
+   ```yaml
+   homebrew_packages:
+     - name: your_package
+
+   homebrew_cask_packages:
+     - name: your_cask_package
+       sudo_password: "{{ password }}"
+4. Run the playbook using the command:
    ```sh
-   ansible-playbook playbooks/configure.yml
+   ansible-playbook /path/to/repo/playbooks/configure.yml

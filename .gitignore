@@ -1,0 +1,2 @@
+# Ignore playbooks/vars.yml to keep configuration private
+playbooks/vars.yml

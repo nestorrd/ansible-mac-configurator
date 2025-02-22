@@ -6,13 +6,8 @@
       prompt: "Enter your user password"
       private: true
 
-  vars:
-    homebrew_packages:
-      - name: betterdisplay
-      - name: visual-studio-code
-    homebrew_cask_packages:
-      - name: docker
-        sudo_password: "{{ password }}"
+  vars_files:
+    - vars.yml
   
   roles:
     - homebrew
