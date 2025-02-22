@@ -1,11 +1,18 @@
 - hosts: localhost
   connection: local
 
+  vars_prompt:
+    - name: password
+      prompt: "Enter your user password"
+      private: true
+
   vars:
-    homebrewpackages:
+    homebrew_packages:
       - name: betterdisplay
-      - name: docker
       - name: visual-studio-code
+    homebrew_cask_packages:
+      - name: docker
+        sudo_password: "{{ password }}"
   
   roles:
     - homebrew

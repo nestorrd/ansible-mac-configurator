@@ -1,0 +1,5 @@
+---
+vars_prompt:
+  - name: password
+    prompt: What is your password?
+    private: true

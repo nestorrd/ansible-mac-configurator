@@ -10,12 +10,30 @@
 
 - name: Install packages with homebrew
   when: 
-    - homebrewpackages is defined
-    - homebrewpackages is iterable
+    - homebrew_packages is defined
+    - homebrew_packages is iterable
   community.general.homebrew:
-    name: "{{ item.name}}"
-    state: "{{ item.state | default('present')}}"
-    force_formula: "{{ item.force_formula | default(omit)}}"
-    install_options: "{{ item.install_options | default(omit)}}"
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+    force_formula: "{{ item.force_formula | default(omit) }}"
+    install_options: "{{ item.install_options | default(omit) }}"
+    path: "{{ item.path | default(omit) }}"
+  loop: "{{ homebrew_packages }}"
+
+# In case default task (homebrew_packages) does not work
+- name: Install Cask packages with homebrew
+  when: 
+    - homebrew_cask_packages is defined
+    - homebrew_cask_packages is iterable
+  community.general.homebrew_cask:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+    sudo_password: "{{ item.password | default('omit') }}"
+    install_options: "{{ item.install_options | default(omit) }}"
     path: "{{ item.path | default(omit)}}"
-  loop: "{{ homebrewpackages }}"
+    greedy: "{{ item.greedy | default(omit)}}"
+    update_homebrew: "{{ item.update_homebrew | default(omit)}}"
+    accept_external_apps: "{{ item.accept_external_apps | default(omit)}}"
+  loop: "{{ homebrew_cask_packages }}"
+  loop_control:
+    label: "{'name': '{{ item.name }}' }"
