@@ -7,7 +7,7 @@
       private: true
 
   vars_files:
-    - vars.yml
+    - ../../ansible-mac-configurator-private/private_vars.yml
   
   roles:
     - homebrew

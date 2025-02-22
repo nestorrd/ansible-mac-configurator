@@ -8,8 +8,6 @@ This repository contains Ansible playbooks and roles for configuring a macOS sys
   - **homebrew/**: A role that includes tasks and variables for managing Homebrew.
     - **tasks/**: Contains the main tasks for the role.
       - `main.yml`: The main task file.
-    - **vars/**: Role-specific variables.
-      - `main.yml`: Variables for the homebrew role.
 
 - **playbooks/**: Contains playbooks for executing tasks.
   - `configure.yml`: The main playbook for configuring the macOS system.
@@ -20,9 +18,9 @@ This repository contains Ansible playbooks and roles for configuring a macOS sys
 
 ## Usage
 
-1. Fork the repository and clone it.
-2. This repository needs a `vars.yml` file where you will store your desired configuration. In case you want to push your changes, remove `vars.yml` from `.gitignore` and make your repository Private.
-3. Create a `vars.yml` file in the `playbooks` directory with the desired content:
+1. Clone the repository.
+2. Create a **private** repository (the repo as it is looks for `ansible-mac-configurator-private`, but change it for the one you created), where you will store your configuration in a yaml file (the repo as it is looks for `private_vars.yml`). This is needed to keep your configuration private.
+2. In this file you will store your desired configuration. As an example:
    ```yaml
    homebrew_packages:
      - name: your_package
@@ -33,3 +31,4 @@ This repository contains Ansible playbooks and roles for configuring a macOS sys
 4. Run the playbook using the command:
    ```sh
    ansible-playbook /path/to/repo/playbooks/configure.yml
+5. Push your changes to your private repository to keep your configuration safe.
