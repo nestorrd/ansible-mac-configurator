@@ -8,3 +8,11 @@
   ansible.builtin.shell:
     cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: ohmyzsh_installed.stat.exists == False
+
+- name: Copy zsh configuration file
+  ansible.builtin.copy:
+    src: ../../ansible-mac-configurator-private/.zshrc
+    dest: $HOME/.zshrc
+    owner: "{{ ansible_user_id }}"
+    group: staff
+    mode: '0644'
