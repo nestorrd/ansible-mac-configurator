@@ -11,7 +11,7 @@
 
 - name: Copy zsh configuration file
   ansible.builtin.copy:
-    src: ../../ansible-mac-configurator-private/.zshrc
+    src: "{{ private_repository_path }}/.zshrc"
     dest: $HOME/.zshrc
     owner: "{{ ansible_user_id }}"
     group: staff
