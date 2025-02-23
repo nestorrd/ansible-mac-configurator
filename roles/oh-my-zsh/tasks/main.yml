@@ -9,6 +9,11 @@
     cmd: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: ohmyzsh_installed.stat.exists == False
 
+- name: Check if .zshrc file exists in private repo
+  stat:
+    path: "{{ private_repository_path }}/.zshrc"
+  register: zshrc_configured
+
 - name: Copy zsh configuration file
   ansible.builtin.copy:
     src: "{{ private_repository_path }}/.zshrc"
@@ -16,3 +21,4 @@
     owner: "{{ ansible_user_id }}"
     group: staff
     mode: '0644'
+  when: zshrc_configured.stat.exists == True

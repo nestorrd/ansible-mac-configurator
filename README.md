@@ -19,8 +19,9 @@ This repository contains Ansible playbooks and roles for configuring a macOS sys
 ## Usage
 
 1. Clone the repository.
-2. Create a **private** repository (the repo as it is looks for `ansible-mac-configurator-private`, but change it for the one you created), where you will store your configuration in a yaml file (the repo as it is looks for `private_vars.yml`). This is needed to keep your configuration private.
-2. In this file you will store your desired configuration. As an example:
+2. Create a **private** repository, where you will store your own configuration. This is needed to keep your configuration private.
+3. Update `vars/custom_vars.yml` to point to your local copy of the private repository.
+4. Create a file in your private repository named `private_vars.yml`. In here you will add all needed configuration used by roles. The file should look like this:
    ```yaml
    homebrew_packages:
      - name: your_package
@@ -28,7 +29,8 @@ This repository contains Ansible playbooks and roles for configuring a macOS sys
    homebrew_cask_packages:
      - name: your_cask_package
        sudo_password: "{{ password }}"
-4. Run the playbook using the command:
+5. [Optional] Create or store your own `.zshrc` zsh configuration file in your private repository. This is optional, in case you don't have any yet, it will be created during installation.
+6. Run the playbook using the command:
    ```sh
    ansible-playbook /path/to/repo/playbooks/configure.yml
-5. Push your changes to your private repository to keep your configuration safe.
+7. Push your changes to your private repository to keep your configuration safe.
