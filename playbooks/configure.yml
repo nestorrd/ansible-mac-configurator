@@ -11,3 +11,4 @@
   
   roles:
     - homebrew
+    - oh-my-zsh
